@@ -8,8 +8,8 @@ using namespace std;
 
 int length(string s)
 {
-   int i;
-   while ( s!="/0" )
+   int i=0;
+   while ( s[i] != '\0' )
    {
       i++;
    }
@@ -18,17 +18,50 @@ int length(string s)
 
 int charCount(string s,char c)
 {
-   return 0;
+   int i = 0;
+   int cont = 0;
+   while ( s[i] != '\0' )
+   {
+      if ( s[i]== c )
+      {
+         cont++;
+      }
+      i++;
+   }
+   return cont;
 }
 
 string substring(string s,int d,int h)
 {
-   return "";
+   int i=0;
+   string res;
+   while ( s[i]!='\0')
+   {
+      if (i>=d)
+      {
+         if (i<h)
+         {
+            res=res+s[i];
+         }
+      }
+      i++;
+   }
+   return res;
 }
 
 string substring(string s,int d) // ok
 {
-   return "";
+   int i=0;
+      string res;
+      while ( s[i]!='\0')
+      {
+         if (i>=d)
+         {
+            res = res+s[i];
+         }
+         i++;
+      }
+      return res;
 }
 
 int indexOf(string s,char c) // ok
