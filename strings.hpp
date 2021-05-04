@@ -66,61 +66,172 @@ string substring(string s,int d) // ok
 
 int indexOf(string s,char c) // ok
 {
-   return 0;
+   int i=0, q=-1;
+   while (s[i]!='\0' and q==-1)
+   {
+      if (s[i]==c)
+      {
+         q=i;
+      }
+      i++;
+   }
+   return q;
 }
 
 int indexOf(string s,char c,int offSet) // ok
 {
-   return 0;
+   int i=0, q=-1;
+   while( s[offSet]!='\0' and q==-1 )
+   {
+      if( s[offSet]==c )
+      {
+         q = i;
+      }
+      offSet++;
+      i++;
+   }
+   return q;
 }
 
 int indexOf(string s,string toSearch) // ok
 {
-   return 0;
+   int i=0, k=0, pos=-1;
+   string substring;
+   for (i=0; i<length(s); i++)
+   {
+      if (s[i] == toSearch[k])
+      {
+         k++;
+         substring = substring + s[i];
+         if( substring==toSearch )
+            {
+               pos = i-k+1;
+               i = length(s);
+            }
+         else
+            k=0;
+      }
+   }
+   return pos;
 }
 
 int indexOf(string s,string toSearch,int offset) // ok
 {
-   return 0;
+   int i=0, k=0, pos=-1;
+      string substring;
+      for (i=0; i<=length(s); i++)
+      {
+         if (s[i] == toSearch[k])
+         {
+            k++;
+            substring = substring + s[i];
+            if( substring==toSearch )
+               {
+                  pos = (length(s)-length(toSearch)+1)+offset;
+                  i = length(s);
+               }
+            else
+               k=0;
+         }
+      }
+      return pos;
 }
 
 int lastIndexOf(string s,char c)
 {
-   return 0;
+   int i = 0,q = -1;
+   while( s[i]!='\0' )
+   {
+      if( s[i]==c )
+      {
+         q = i;
+      }
+      i++;
+   }
+   return q;
 }
 
 int indexOfN(string s,char c,int n)
 {
-   return 0;
+   int i = 0,q = -1, cn=1;
+      while( s[i]!='\0' and cn<=n)
+      {
+         if( s[i]==c )
+         {
+            q = i;
+            cn++;
+         }
+         i++;
+      }
+      if (n>cn) {
+         q = length (s) - 1;
+      }
+    return q;
 }
 
 int charToInt(char c)
 {
-   return 0;
+   int n;
+   n = c - 48;
+   return n;
 }
 
 char intToChar(int i)
 {
-   return 'X';
+   char n;
+   n = i + 48;
+   return n;
 }
 
 int getDigit(int n,int i)
 {
-   return 0;
+   int res, x = 0;
+   if( i>0 )
+   {
+      while( x<i )
+      {
+         n = n/10;
+         x++;
+      }
+      res = n%10;
+   }
+   else
+   {
+      res = n%10;
+   }
+   return res;
 }
 
 int digitCount(int n)
 {
-   return 0;
+   int cd=0, dn=0;
+   while (n>9)
+   {
+      n=n/10;
+      cd++;
+   }
+   dn=cd+1;
+   return dn;
 }
 
 string intToString(int i)
 {
-   return "";
+   int d=0, y;
+   char t;
+   string res;
+   while (d < digitCount(i))
+   {
+      y = getDigit(i,d);
+      t = intToChar(y);
+      res = t + res;
+      d++;
+   }
+   return res;
 }
 
 int stringToInt(string s,int b) // ok
 {
+
    return 0;
 }
 
