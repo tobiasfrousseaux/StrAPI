@@ -4,6 +4,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
 using namespace std;
 
 int length(string s)
@@ -231,143 +232,331 @@ string intToString(int i)
 
 int stringToInt(string s,int b) // ok
 {
-
-   return 0;
+   int i=0, x=0;
+   char y;
+   while (s[i]!='\0')
+   {
+      y=s[i];
+      x = x *(10) + charToInt(y);
+      i++;
+   }
+   return x;
 }
 
 int stringToInt(string s) // ok
 {
-   return 0;
+   int i = 0,x = 0;
+   char y;
+   while( s[i]!='\0' )
+   {
+      y = s[i];
+      x = x*(10)+charToInt(y);
+      i++;
+   }
+   return x;
 }
 
 string charToString(char c)
 {
-   return "";
+   string s;
+   s = s + c;
+   return s;
 }
 
 char stringToChar(string s)
 {
-   return 'X';
+   int i=0;
+   char c;
+   c = s[i];
+   return c;
 }
 
 string stringToString(string s)
 {
-   return "";
+   string g = s;
+   return g;
 }
 
 string doubleToString(double d)
 {
-   return "";
+   return to_string(d);
 }
 
 double stringToDouble(string s)
 {
+
    return 1.1;
 }
 
 bool isEmpty(string s)
 {
-   return true;
+   int i=0;
+   while (s[i] != '\0')
+   {
+      i++;
+   }
+   if ( i>0 )
+   {
+      return false;
+   }
+   else
+      return true;
 }
 
 bool startsWith(string s,string x)
 {
-   return true;
+   if (substring(s,0,length(x))==x)
+   {
+      return true;
+   }
+   else
+      return false;
 }
 
 bool endsWith(string s,string x)
 {
-   return true;
+   int y = length(s)-length(x);
+   if (substring(s,y)==x)
+   {
+      return true;
+   }
+   else
+      return false;
 }
 
 bool contains(string s,char c)
 {
-   return true;
+   if (indexOf(s,c) != -1)
+   {
+      return true;
+   }
+   else
+      return false;
 }
 
 string replace(string s,char oldChar,char newChar)
 {
-   return "";
+   string t;
+   int i=0;
+   while (s[i]!='\0')
+   {
+      if (s[i]==oldChar)
+      {
+         t=t+newChar;
+      }
+      else
+         t=t+s[i];
+      i++;
+   }
+   return t;
 }
 
 string insertAt(string s,int pos,char c)
 {
-   return "";
+   int i=0;
+   string t;
+   while(s[i]!='\0')
+   {
+      if (i==pos)
+      {
+         t=t+c;
+      }
+      else
+         t=t+s[i];
+      i++;
+   }
+   return t;
 }
 
 string removeAt(string s,int pos)
 {
-   return "";
+   int i = 0;
+   string t;
+   while( s[i]!='\0' )
+   {
+      if( i != pos)
+      {
+         t = t+s[i];
+      }
+      i++;
+   }
+   return t;
 }
 
 string ltrim(string s)
 {
-   return "";
+   string t;
+   int i=0, q=0, g=0;
+   while ( s[i]!='\0' )
+   {
+      if (s[i]==' ' and q==0)
+      {
+         g++;
+      }
+      if (s[i]!=' ')
+      {
+         q++;
+      }
+      i++;
+   }
+   t = substring(s,g);
+   return t;
 }
 
 string rtrim(string s)
 {
-   return "";
+   string t;
+   int q = length(s);
+   while (s[(q-1)]==' ')
+   {
+      q--;
+   }
+   t = substring (s,0,q);
+   return t;
 }
 
 string trim(string s)
 {
-   return "";
+   string t;
+   t = rtrim(s);
+   t = ltrim(t);
+   return t;
 }
 
 string replicate(char c,int n)
 {
-   return "";
+   string t;
+   int i = 0;
+   while (i<n)
+   {
+      t = t + c;
+      i++;
+   }
+   return t;
 }
 
 string spaces(int n)
 {
-   return "";
+   string t;
+   int i = 0;
+   while (i<n)
+   {
+      t = t + ' ';
+   }
+   return t;
 }
 
 string lpad(string s,int n,char c)
 {
-   return "";
+   string t;
+   int q = n - length(s);
+   if (length(s)<n)
+   {
+      t = replicate(c,(q+1)) + s;
+   }
+   return t;
 }
 
 string rpad(string s,int n,char c)
 {
-   return "";
+   string t;
+   int q = n-length(s);
+   if( length(s)<n )
+   {
+      t = s + replicate(c,(q+1));
+   }
+   return t;
 }
 
 string cpad(string s,int n,char c)
 {
-   return "";
+   string t;
+   int q = n-length(s);
+   if( length(s)<n )
+   {
+      t = replicate(c,((q+1)/2))+ s + replicate(c,((q+1)/2));
+   }
+   return t;
 }
 
 bool isDigit(char c)
 {
-   return true;
+   if (48 <= c and c <= 57)
+   {
+      return true;
+   }
+   else
+      return false;
 }
 
 bool isLetter(char c)
 {
-   return true;
+   if( (65<= c and c <=90) or (97<= c and c <=122) )
+   {
+      return true;
+   }
+   else
+      return false;
 }
 
 bool isUpperCase(char c)
 {
-   return true;
+   if( 65<=c and c<=90 )
+   {
+      return true;
+   }
+   else
+      return false;
 }
 
 bool isLowerCase(char c)
 {
-   return true;
+   if( 97<=c and c<=122 )
+   {
+      return true;
+   }
+   else
+      return false;
 }
 
 char toUpperCase(char c)
 {
-   return 'X';
+   char u;
+   u = c - 32;
+   return u;
 }
 
 char toLowerCase(char c)
 {
-   return 'X';
+   char u;
+   u = c+32;
+   return u;
+}
+
+string toUpperCases(string s)
+{
+   int i=0;
+   string t;
+   while (s[i]!='\0')
+   {
+      char c = s[i];
+      t = t + toUpperCase(c);;
+      i++;
+   }
+   return t;
+}
+
+string toLowerCases(string s)
+{
+   int i=0;
+   string t;
+   while (s[i]!='\0')
+   {
+      char c = s[i];
+      t = t + toLowerCase(c);;
+      i++;
+   }
+   return t;
 }
 
 #endif
